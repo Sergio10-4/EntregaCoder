@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productoras Cinematograficas</title>
+</head>
+<body>
+    <h1>Esta Es Una Lista De Productoras</h1>
+
+    <ul>
+
+        {% for productora in Productoras %}
+            <li style="color: green;">{{ productora.nombre }}</li>
+            <li style="color: blue;">{{ productora.fundacion }}</li>
+            <li style="color: red;">{{ productora.presupuesto }}</li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>
