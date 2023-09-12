@@ -26,7 +26,7 @@ urlpatterns = [
     #path('Pelicula/<nombre>/<duracion>/<recaudacion>', Pelicula),
     path('indice-peliculas/', pelicula),
     #path('Series/<nombre>/<cant_temporadas>/<año_estreno>', Serie),
-    path('indice-series/', serie),
+    path('indice-series/', serie, name="Series"),
     #path('template/', invocar_html),
     path('', Inicio),
 ]
