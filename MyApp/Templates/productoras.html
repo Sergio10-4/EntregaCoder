@@ -6,4 +6,12 @@
 
     <p>Este es un parrafo que representa la descripcion de las reproductoras activas</p>
 
+    <form action="indice-productoras/" method="POST"> {% csrf_token %}
+        <p>Productora: <input type="text" name="Productora"></p>
+        <p>Fundacion: <input type="number" name="Fundacion"></p>
+        <p>Presupuesto: <input type="number" name="Presupuesto"></p>
+
+        <button type="submit">Enviar</button>
+    </form>
+
 {% endblock contenido %}

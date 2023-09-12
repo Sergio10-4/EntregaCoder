@@ -10,46 +10,39 @@ def Inicio(req):
 
 def productora(req):
 
-    return render(req, "productoras.html")
+    print('method', req.method)
+    print('POST', req.POST)
+    if req.method == 'POST':
+
+        productora = Productora(Nombre=req.POST["Productora"], Fundacion=req.POST["Fundacion"], Presupuesto=req.POST["Presupuesto"])
+        productora.save()
+
+        return render(req, 'inicio.html')
+    else:
+        return render(req, "productoras.html")
 
 def pelicula(req):
 
-    return render(req, "peliculas.html")
+    print('method', req.method)
+    print('POST', req.POST)
+    if req.method == 'POST':
+
+        pelicula = Pelicula(Nombre=req.POST["Pelicula"], Fundacion=req.POST["Duracion"], Presupuesto=req.POST["Recaudacion"])
+        pelicula.save()
+
+        return render(req, 'inicio.html')
+    else:
+        return render(req, "peliculas.html")
 
 def serie(req):
 
-    return render(req, "series.html")
+    print('method', req.method)
+    print('POST', req.POST)
+    if req.method == 'POST':
 
-"""
+        serie = Serie(Nombre=req.POST["Serie"], Fundacion=req.POST["Temporadas"], Presupuesto=req.POST["Estreno"])
+        serie.save()
 
-def registro_productoras(req):
-
-    lista_productoras = Productora.objects.all()
-
-    return render(req, "Productoras.html", {"Productoras": lista_productoras})
-
-#def registro_peliculas(req):
-
-#    lista_peliculas = Pelicula.objects.all()
-
-#    return render(req, "Peliculas.html", {"Peliculas": lista_peliculas})
-
-def registro_Series(req):
-
-    lista_series = Serie.objects.all()
-
-    return render(req, "Series.html", {"Series": lista_series})
-"""
-def invocar_html(req):
-
-    #dochtml = open('C:/Users/asus/Desktop/Proyecto/EntregaCoder/EntregaCoder/Templates/html.html')
-    #plantilla = Template(dochtml.read())
-    #dochtml.close()
-
-    #contexto1 = Context()
-
-    #doc2 = plantilla.render(contexto1)
-    #return HttpResponse(doc2)
-
-    plantilla = loader.get_template('html.html')
-    return HttpResponse(plantilla)
+        return render(req, 'inicio.html')
+    else:
+        return render(req, "series.html")
