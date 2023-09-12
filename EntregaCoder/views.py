@@ -3,44 +3,44 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from MyApp.models import Productora, Pelicula, Serie
 
-def Productora(req, nombre, fundacion, presupuesto):
+def registro_Productora(req, nombre, fundacion, presupuesto):
 
     productora = Productora(Nombre=nombre, Fundacion=fundacion, Presupuesto=presupuesto)
     productora.save()
 
     return HttpResponse("Compañia Ingresada Correctamente!")
 
-def Pelicula(req, nombre, duracion, recaudacion):
+def registro_Pelicula(req, nombre, duracion, recaudacion):
 
     pelicula = Pelicula(Nombre=nombre, Duracion=duracion, Recaudacion=recaudacion)
     pelicula.save()
 
     return HttpResponse("Pelicula Ingresada Correctamente!")
 
-def Serie(req, nombre, cant_temporadas, año_estreno):
+def registro_Serie(req, nombre, cant_temporadas, año_estreno):
 
     serie = Serie(Nombre=nombre, Temporadas=cant_temporadas, Año=año_estreno)
     serie.save()
 
     return HttpResponse("Serie Ingresada Correctamente!")
 
-def registro_productoras(req):
+def listar_productoras(req):
 
     lista_productoras = Productora.objects.all()
 
-    return render(req, "Productoras.html", {"Productoras": lista_productoras})
+    return render(req, "listarProductoras.html", {"Productoras": lista_productoras})
 
-def registro_peliculas(req):
+def listar_peliculas(req):
 
     lista_peliculas = Pelicula.objects.all()
 
-    return render(req, "Peliculas.html", {"Peliculas": lista_peliculas})
+    return render(req, "listarPeliculas.html", {"Peliculas": lista_peliculas})
 
-def registro_Series(req):
+def listar_Series(req):
 
     lista_series = Serie.objects.all()
 
-    return render(req, "Series.html", {"Series": lista_series})
+    return render(req, "listarSeries.html", {"Series": lista_series})
 
 
 def invocar_html(req):
