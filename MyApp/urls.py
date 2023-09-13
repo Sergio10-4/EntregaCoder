@@ -22,11 +22,11 @@ from MyApp.views import *
 urlpatterns = [
     #path('admin/', admin.site.urls),
     #path('Productoras/<nombre>/<fundacion>/<presupuesto>', Productora),
-    path('indice-productoras/', productora),
+    path('proyecto-coder/indice-productoras/', productora),
     #path('Pelicula/<nombre>/<duracion>/<recaudacion>', Pelicula),
     path('indice-peliculas/', pelicula),
     #path('Series/<nombre>/<cant_temporadas>/<año_estreno>', Serie),
-    path('indice-series/', serie, name="Series"),
+    path('proyecto-coder/indice-series/', serie, name="Series"),
     #path('template/', invocar_html),
     path('', Inicio),
 ]

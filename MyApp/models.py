@@ -28,7 +28,7 @@ class Pelicula(models.Model):
 
     def __str__(self):
         return f' {self.nombre} - {self.duracion} - {self.recaudacion} - {self.productoraCinematografica}'
-    
+        
     class Meta():
 
         verbose_name = 'Pelicula'

@@ -6,7 +6,7 @@
 
     <p>Este es un parrafo que representa la descripcion de la pagina</p>
 
-    <form action="indice-peliculas/" method="POST"> {% csrf_token %}
+    <form action="/indice-peliculas/" method="POST"> {% csrf_token %}
         <p>Pelicula: <input type="text" name="Pelicula"></p>
         <p>Duracion: <input type="number" name="Duracion"></p>
         <p>Recaudacion: <input type="number" name="Recaudacion"></p>

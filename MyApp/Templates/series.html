@@ -6,7 +6,7 @@
 
     <p>Este es un parrafo que representa la descripcion de las series disponibles</p>
 
-    <form action="indice-series/" method="POST"> {% csrf_token %}
+    <form action="/indice-series/" method="POST"> {% csrf_token %}
         <p>Serie: <input type="text" name="Serie"></p>
         <p>cantidad_temporadas: <input type="number" name="Temporadas"></p>
         <p>fecha_estreno: <input type="number" name="Estreno"></p>
