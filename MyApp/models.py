@@ -6,7 +6,7 @@ from django.db import models
 
 class Productora(models.Model):
 
-    nombre = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=100)
     fundacion = models.IntegerField()
     presupuesto = models.FloatField()
 
@@ -21,7 +21,7 @@ class Productora(models.Model):
 
 class Pelicula(models.Model):
 
-    nombre = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=100)
     duracion = models.DurationField()
     recaudacion = models.FloatField()
     productoraCinematografica = models.ForeignKey(Productora, on_delete=models.CASCADE)
@@ -37,7 +37,7 @@ class Pelicula(models.Model):
 
 class Serie(models.Model):
 
-    nombre = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=100)
     cantidad_temporadas = models.IntegerField()
     fecha_estreno = models.DateField()
     productoraCinematografica = models.ForeignKey(Productora, on_delete=models.CASCADE)

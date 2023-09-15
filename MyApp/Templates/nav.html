@@ -1,10 +1,9 @@
 <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-        <a class="navbar-brand" href="/proyecto-coder/">Inicio</a>
-        <a class="navbar-brand" href="/proyecto-coder/indice-productoras/">Productoras</a>
-        <a class="navbar-brand" href="/proyecto-coder/indice-peliculas/">Peliculas</a>
+        <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
+        <a class="navbar-brand" href="{% url 'Productoras' %}">Productoras</a>
+        <a class="navbar-brand" href="{% url 'Peliculas' %}">Peliculas</a>
         <a class="navbar-brand" href="{% url 'Series' %}">Series</a>
-        <input type="search" placeholder="Realizar Busqueda..." type="submit" value="Buscar">
         <a class="btn btn-primary" href="#signup">Ingresar</a>
     </div>
 </nav>

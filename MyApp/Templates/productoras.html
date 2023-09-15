@@ -1,17 +1,14 @@
-
 {% extends 'herencia.html' %}
 
 {% block contenido %}
-    <h1>Esta es la vista de productoras</h1>
+    <h3>Productoras</h3>
 
-    <p>Este es un parrafo que representa la descripcion de las reproductoras activas</p>
+    <p>En Esta Seccion Podras Agregar & Registrar Nuevas Productoras Para Futuras Producciones De Cine</p>
 
-    <form action="indice-productoras/" method="POST"> {% csrf_token %}
-        <p>Productora: <input type="text" name="Productora"></p>
-        <p>Fundacion: <input type="number" name="Fundacion"></p>
-        <p>Presupuesto: <input type="number" name="Presupuesto"></p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
 
         <button type="submit">Enviar</button>
     </form>
-
 {% endblock contenido %}

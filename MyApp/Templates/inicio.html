@@ -2,8 +2,29 @@
 {% extends 'herencia.html' %}
 
 {% block contenido %}
-    <h1>Esta es la vista de inicio</h1>
+    {% load static %}
+    <link href="{% static 'templates/stylee.css' %}" rel="stylesheet" />
+    <h1 style="background-color: wheat; font-family: cursive; font-weight: 100; color: orangered;">Esta es la vista de inicio</h1>
 
-    <p>Este es un parrafo que representa la descripcion del inicio</p>
+    <p style="color: orangered;">En Esta Seccion Podras Realizar Busquedas Por Nombres Y Conseguir Resultados Bajo El Mismo Criterio De Busqueda..</p>
+
+    <h7 style="color: blue;">Aqui Puedes Buscar El Nombre De Alguna Pelicula Que Desees Consultar</h7>
+    <form method="GET" action="{% url 'buscarpelicula' %}">
+        <input style="background-color: wheat;" type="text" name="query" placeholder="Buscar Pelicula">
+        <button type="submit"; style="color: cornflowerblue; background-color: wheat;">Buscar</button>
+    </form>
+    <div class="container">
+    <h7 style="color: blue;">Aqui Puedes Buscar El Nombre De Alguna Serie Que Desees Consultar</h7>
+    <form class="formulario-series" method="GET" action="{% url 'buscarserie' %}">
+        <input style="background-color: wheat;" type="text" name="query" placeholder="Buscar Serie">
+        <button type="submit"; style="color: cornflowerblue; background-color: wheat;">Buscar</button>
+    </form>
+    </div>
+
+    <h7 style="color: blue;">Aqui Puedes Buscar El Nombre De Alguna Productora Que Desees Consultar</h7>
+    <form method="GET" action="{% url 'buscarproductora' %}">
+        <input style="background-color: wheat;" type="text" name="query" placeholder="Buscar Productora">
+        <button type="submit"; style="color: cornflowerblue; background-color: wheat;">Buscar</button>
+    </form>
 
 {% endblock contenido %}

@@ -1,0 +1,19 @@
+{% extends 'herencia.html' %}
+
+{% block contenido %}
+    <h3 style="color: crimson;">Lista De Series Encontradas</h3>
+
+    <p style="color: blue;">Aqui Apareceran Los Resultados De Tu Busqueda</p>
+
+{% if series %}
+  <h5 style="color: blue;">Resultados de búsqueda para "{{ query }}"</h5>
+  <ul>
+    {% for serie in series %}
+      <li style="color: green;">{{ serie.nombre }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
+{% endif %}
+
+{% endblock contenido %}

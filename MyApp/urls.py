@@ -16,19 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MyApp.views import Inicio
 from MyApp.views import *
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
     #path('Productoras/<nombre>/<fundacion>/<presupuesto>', Productora),
-    path('proyecto-coder/indice-productoras/', productora),
+    path('indice-productoras/', productora, name="Productoras"),
     #path('Pelicula/<nombre>/<duracion>/<recaudacion>', Pelicula),
-    path('indice-peliculas/', pelicula),
-    #path('Series/<nombre>/<cant_temporadas>/<año_estreno>', Serie),
-    path('proyecto-coder/indice-series/', serie, name="Series"),
-    #path('template/', invocar_html),
-    path('', Inicio),
+    path('indice-peliculas/', pelicula, name="Peliculas"),
+    path('indice-series/', serie, name="Series"),
+    path('', Inicio, name="Inicio"),
+    path('buscar-peliculas/', buscar_peliculas, name='buscarpelicula'),
+    path('buscar-serie/', buscar_series, name="buscarserie"),
+    path('buscar-productora/', buscar_productoras, name="buscarproductora"),
+    path('pelicula/', peliculaTitulo, name='pelicula'),
+    path('serie/', serieTitulo, name='serie'),
+    path('productora/', productoraTitulo, name='productora'),
 ]
 
 

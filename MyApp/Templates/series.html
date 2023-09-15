@@ -2,14 +2,13 @@
 {% extends 'herencia.html' %}
 
 {% block contenido %}
-    <h1>Esta es la vista de series</h1>
+    <h1>Series</h1>
 
-    <p>Este es un parrafo que representa la descripcion de las series disponibles</p>
+    <p>En Esta Seccion Podras Agregar & Registrar Nuevas Series Para Futuras Transmisiones De Cine</p>
 
-    <form action="/indice-series/" method="POST"> {% csrf_token %}
-        <p>Serie: <input type="text" name="Serie"></p>
-        <p>cantidad_temporadas: <input type="number" name="Temporadas"></p>
-        <p>fecha_estreno: <input type="number" name="Estreno"></p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
 
         <button type="submit">Enviar</button>
     </form>

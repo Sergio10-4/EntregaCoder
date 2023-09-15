@@ -26,9 +26,19 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">Mi Tercera Entrega CoderHouse
-                                <br>
-                            (Chandias-Sergio😃)</h1>
+                            <h1 class="mb-5">
+                                {% if request.path == '/' %}
+                                    {% if 'inicio' in request.path %}
+                                        Inicio
+                                    {% endif %}
+                                {% elif 'pelicula' in request.path %}
+                                    Peliculas
+                                {% elif 'serie' in request.path %}
+                                    Series
+                                {% elif 'productora' in request.path %}
+                                    Productoras
+                                {% endif %}
+                            </h1>
                                 <div class="d-none" id="submitSuccessMessage">
                                     <div class="text-center mb-3">
                                         <div class="fw-bolder">Form submission successful!</div>
