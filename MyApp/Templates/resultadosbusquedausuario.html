@@ -1,0 +1,55 @@
+
+{% block contenido %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Resultados</title>
+        {% load static %}
+        <link href="{% static 'css/resultados.css' %}" rel="stylesheet" />
+        <script>
+            function submitForm() {
+                document.getElementsByClassName('search')[0].submit();
+            }
+        </script>
+        <style>
+            .filters {
+                display: flex;
+                justify-content: left;
+                align-items: left;
+                margin: 20px 0;
+                left: 50%;
+            }
+        </style>
+    </head>
+    {% include 'busquedausuarios.html' %}
+    <section class="main">
+        <header>
+            <div class="results">
+                <h3>Lista De Usuarios Encontrados</h3>
+                <br>
+                <p>Aqui Apareceran Los Resultados De Tu Busqueda</p>
+            </div>
+        </header>
+        <body>
+            {% if usuarios %}
+            <h5>{{ query }}</h5>
+            {% for usuario in usuarios %}
+                <div class="card">
+                    <div class="poster">
+                        <img src="{{ usuario.foto_perfil.url }}" alt="{{ pelicula.nombre }}">
+                    </div>
+                    <div class="details">
+                        <h3>{{ usuario.user }}</h3>
+                        <div class="rating">
+                            <span>{{ usuario.email }}</span>
+                        </div>
+                        <div class="info">
+                            <p>{{ usuario.descripcion_usuario }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+            <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
+            {% endif %}
+        </body>
+{% endblock contenido %}

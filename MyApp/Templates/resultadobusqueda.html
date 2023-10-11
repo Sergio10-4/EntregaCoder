@@ -1,19 +1,58 @@
-{% extends 'herencia.html' %}
-
 {% block contenido %}
-    <h3 style="color: crimson;">Lista De Peliculas Encontradas</h3>
-
-    <p style="color: blue;">Aqui Apareceran Los Resultados De Tu Busqueda</p>
-
-{% if peliculas %}
-  <h5 style="color: blue;">Resultados de búsqueda para "{{ query }}"</h5>
-  <ul>
-    {% for pelicula in peliculas %}
-      <li style="color: green;">{{ pelicula.nombre }}</li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
-{% endif %}
-
+    <head>
+        <meta charset="UTF-8">
+        <title>Resultados Peliculas</title>
+        {% load static %}
+        <link href="{% static 'css/resultados.css' %}" rel="stylesheet" />
+        <script>
+            function submitForm() {
+                document.getElementsByClassName('search')[0].submit();
+            }
+        </script>
+        <style>
+            .filters {
+                display: flex;
+                justify-content: left;
+                align-items: left;
+                margin: 20px 0;
+                left: 50%;
+            }
+        </style>
+    </head>
+    <section class="main">
+        <header>
+            <div class="results">
+                <h3>Lista De Peliculas Encontradas</h3>
+                <br>
+                <p>Aqui Apareceran Los Resultados De Tu Busqueda</p>
+            </div>
+        </header>
+        <body>
+            {% if peliculas %}
+            <h5>{{ query }}</h5>
+            {% for pelicula in peliculas %}
+                <div class="card">
+                    <div class="poster">
+                        <img src="{{ pelicula.portada.url }}" alt="{{ pelicula.nombre }}">
+                    </div>
+                    <div class="details">
+                        <h3>{{ pelicula.nombre }}</h3>
+                        <div class="rating">
+                            <span>{{ pelicula.rating }}/5</span>
+                        </div>
+                        <div class="tags">
+                            {% for genero in generos %}
+                                <span>{{ genero.nombre }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="info">
+                            <p>{{ pelicula.descripcion }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
+        {% endif %}
+        </body>
 {% endblock contenido %}

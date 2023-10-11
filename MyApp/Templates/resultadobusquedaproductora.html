@@ -1,19 +1,37 @@
-{% extends 'herencia.html' %}
-
 {% block contenido %}
-    <h3 style="color: crimson;">Lista De Productoras Encontradas</h3>
-
-    <p style="color: blue;">Aqui Apareceran Los Resultados De Tu Busqueda De Productoras</p>
-
-{% if productoras %}
-  <h5 style="color: blue;">Resultados de búsqueda para "{{ query }}"</h5>
-  <ul>
-    {% for productora in productoras %}
-      <li style="color: green;">{{ productora.nombre }}</li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
-{% endif %}
-
+    <head>
+        {% load static %}
+        <link href="{% static 'css/resultados.css' %}" rel="stylesheet" />
+    </head>
+    <section class="main">
+        <header>
+            <div class="results">
+                <h3>Lista De Productoras Encontradas</h3>
+                <br>
+                <p>Aqui Apareceran Los Resultados De Tu Busqueda</p>
+            </div>
+        </header>
+        <body>
+            {% if productoras %}
+            <h5>Resultados de búsqueda para {{ query }}</h5>
+            {% for productora in productoras %}
+                <div class="card">
+                    <div class="poster">
+                        <img src="{{ pelicula.portada.url }}" alt="{{ pelicula.nombre }}">
+                    </div>
+                    <div class="details">
+                        <h3>{{ productora.nombre }}</h3>
+                    </div>
+                    <div class="rating">
+                        <span>{{ productora.presupuesto }}</span>
+                    </div>
+                    <div class="info">
+                        <p>{{ productora.fundacion }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
+        {% endif %}
+        </body>
 {% endblock contenido %}

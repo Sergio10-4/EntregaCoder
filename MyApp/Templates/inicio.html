@@ -1,30 +1,54 @@
-
-{% extends 'herencia.html' %}
-
-{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
     {% load static %}
-    <link href="{% static 'templates/stylee.css' %}" rel="stylesheet" />
-    <h1 style="background-color: wheat; font-family: cursive; font-weight: 100; color: orangered;">Esta es la vista de inicio</h1>
-
-    <p style="color: orangered;">En Esta Seccion Podras Realizar Busquedas Por Nombres Y Conseguir Resultados Bajo El Mismo Criterio De Busqueda..</p>
-
-    <h7 style="color: blue;">Aqui Puedes Buscar El Nombre De Alguna Pelicula Que Desees Consultar</h7>
-    <form method="GET" action="{% url 'buscarpelicula' %}">
-        <input style="background-color: wheat;" type="text" name="query" placeholder="Buscar Pelicula">
-        <button type="submit"; style="color: cornflowerblue; background-color: wheat;">Buscar</button>
-    </form>
-    <div class="container">
-    <h7 style="color: blue;">Aqui Puedes Buscar El Nombre De Alguna Serie Que Desees Consultar</h7>
-    <form class="formulario-series" method="GET" action="{% url 'buscarserie' %}">
-        <input style="background-color: wheat;" type="text" name="query" placeholder="Buscar Serie">
-        <button type="submit"; style="color: cornflowerblue; background-color: wheat;">Buscar</button>
-    </form>
+    <link href="{% static 'css/inicio.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn">
+                <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+                </div>
+            </div>
+            <form id="login" class="input-group" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                {{ miFormulario.as_p }}
+                <input type="text" class="input-field" placeholder="User Id" required name="username">
+                <input type="password" class="input-field" placeholder="Enter Password" required name="password">
+                <input type="checkbox" class="check-box"><span>Remember Password</span>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <form id="register" class="input-group" action="{% url 'Inicio' %}" method="post">
+                {% csrf_token %}
+                <input type="text" class="input-field" name="user" placeholder="User Id" required>
+                <input type="email" class="input-field" name="email" placeholder="Email Id" required>
+                <input type="password" class="input-field" name="password" placeholder="Enter Password" required>
+                <input type="checkbox" class="check-box" name="agree_terms"><span>I Agree To The Terms</span>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>
     </div>
-
-    <h7 style="color: blue;">Aqui Puedes Buscar El Nombre De Alguna Productora Que Desees Consultar</h7>
-    <form method="GET" action="{% url 'buscarproductora' %}">
-        <input style="background-color: wheat;" type="text" name="query" placeholder="Buscar Productora">
-        <button type="submit"; style="color: cornflowerblue; background-color: wheat;">Buscar</button>
-    </form>
-
-{% endblock contenido %}
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn");
+        function register(){
+            x.style.left="-400px";
+            y.style.left="50px";
+            z.style.left="110px";
+        }
+        function login(){
+            x.style.left="50px";
+            y.style.left="450px";
+            z.style.left="0px";
+        }
+    </script>
+</body>
+</html>

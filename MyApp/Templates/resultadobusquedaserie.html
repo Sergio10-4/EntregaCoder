@@ -1,19 +1,42 @@
-{% extends 'herencia.html' %}
-
 {% block contenido %}
-    <h3 style="color: crimson;">Lista De Series Encontradas</h3>
-
-    <p style="color: blue;">Aqui Apareceran Los Resultados De Tu Busqueda</p>
-
-{% if series %}
-  <h5 style="color: blue;">Resultados de búsqueda para "{{ query }}"</h5>
-  <ul>
-    {% for serie in series %}
-      <li style="color: green;">{{ serie.nombre }}</li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
-{% endif %}
-
+    <head>
+        {% load static %}
+        <link href="{% static 'css/resultados.css' %}" rel="stylesheet" />
+    </head>
+    <section class="main">
+        <header>
+            <div class="results">
+                <h3>Lista De Series Encontradas</h3>
+                <br>
+                <p>Aqui Apareceran Los Resultados De Tu Busqueda</p>
+            </div>
+        </header>
+        <body>
+            {% if series %}
+            <h5>Resultados de búsqueda para {{ query }}</h5>
+            {% for serie in series %}
+                <div class="card">
+                    <div class="poster">
+                        <img src="{{ serie.portada.url }}" alt="{{ serie.nombre }}">
+                    </div>
+                    <div class="details">
+                        <h3>{{ serie.nombre }}</h3>
+                        <div class="rating">
+                            <span>{{ serie.rating }}/5</span>
+                        </div>
+                        <div class="tags">
+                            {% for genero in generos %}
+                                <span>{{ genero.nombre }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="info">
+                            <p>{{ serie.descripcion }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color: red;">No se encontraron resultados para "{{ query }}"</p>
+        {% endif %}
+        </body>
 {% endblock contenido %}

@@ -1,36 +1,35 @@
-"""
-URL configuration for EntregaCoder project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
-from MyApp.views import *
+from .views import perfilUsuario, profile, usuario
+from . import views
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    #path('Productoras/<nombre>/<fundacion>/<presupuesto>', Productora),
-    path('indice-productoras/', productora, name="Productoras"),
-    #path('Pelicula/<nombre>/<duracion>/<recaudacion>', Pelicula),
-    path('indice-peliculas/', pelicula, name="Peliculas"),
-    path('indice-series/', serie, name="Series"),
-    path('', Inicio, name="Inicio"),
-    path('buscar-peliculas/', buscar_peliculas, name='buscarpelicula'),
-    path('buscar-serie/', buscar_series, name="buscarserie"),
-    path('buscar-productora/', buscar_productoras, name="buscarproductora"),
-    path('pelicula/', peliculaTitulo, name='pelicula'),
-    path('serie/', serieTitulo, name='serie'),
-    path('productora/', productoraTitulo, name='productora'),
+    path('indice-productoras/', views.productora, name="Productoras"),
+    path('indice-peliculas/', views.pelicula, name="Peliculas"),
+    path('indice-series/', views.serie, name="Series"),
+    path('inicio/', views.Inicio, name="Inicio"),
+    path('home/', views.home, name="home"),
+    path('registrar-usuario/', views.usuario, name="añadirusuario"),
+    path('buscar-peliculas/', views.buscar_peliculas, name='buscarpelicula'),
+    path('buscar-serie/', views.buscar_series, name="buscarserie"),
+    path('buscar-productora/', views.buscar_productoras, name="buscarproductora"),
+    path('buscar-usuarios/', views.buscar_usuarios, name="buscarusuarios"),
+    path('pelicula/', views.peliculaTitulo, name='pelicula'),
+    path('serie/', views.serieTitulo, name='serie'),
+    path('productora/', views.productoraTitulo, name='productora'),
+    path('acerca-de-mi/', views.aboutMe, name='aboutme'),
+    path('catalogo-de-peliculas/', views.peliCatalogo, name='catalogopeliculas'),
+    path('catalogo-de-series/', views.serieCatalogo, name='catalogoseries'),
+    path('catalogo-de-productoras/', views.productCatalogo, name='catalogoproductoras'),
+    path('Error-404/', views.Error, name='Error'),
+    path('lista-de-Actores/', views.listaActores, name='Cast'),
+    path('lista-de-categorias/', views.listaGeneros, name='Categorias'),
+    path('acerca-de-pagina/', views.aboutPage, name='aboutpage'),
+    path('acerca-del-dev/', views.aboutDev, name='sobremi'),
+    path('perfil-de-usuario/', views.loginView, name='Perfil'),
+    path('perfil-de/', views.profile, name='PerfilUsuario'),
+    path('cerrar-sesion/', views.cerrarSesion, name='cerrarSesion'),
+    path('cambiar-contraseña/', views.cambiarContraseña, name='parallax'),
+    path('lista/<int:lista_nombre>/', views.agregar_peliculas_a_lista, name='peliculasUsuario'),
 ]
-
-

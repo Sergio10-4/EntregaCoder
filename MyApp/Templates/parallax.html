@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/parallax.css' %}">
+</head>
+<body>
+    <style>
+        /* Estilos para el contenido del formulario */
+
+        .form-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            top: 20%;
+            left: 25%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 123, 178, 0.5);
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            z-index: 20000;
+        }
+
+        .form-container h3 {
+            text-align: center;
+            color: #ccc;
+        }
+
+        .form-container p {
+            text-align: center;
+            color: #ccc;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container form input,
+        .form-container form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container form button {
+            padding: 10px;
+            background: linear-gradient(#007bb2, #0d1423);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container .tags-dropdown {
+            position: relative;
+        }
+
+        .form-container .tags-dropdown .tags-list {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #931414;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container .tags-dropdown:hover .tags-list {
+            display: block;
+        }
+
+        .form-container .tags-dropdown .tags-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .form-container .tags-dropdown .tags-list ul li {
+            margin-bottom: 5px;
+        }
+
+        #formCorreo {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            top: 30%;
+            left: -20%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 123, 178, 0.5);
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            z-index: 20000;
+        }
+
+        /* Estilos para hacer el diseño responsivo */
+        @media (max-width: 800px) {
+            .form-container {
+                max-width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+        }
+    </style>
+    <section id="home">
+        <img src="{% static 'Parallax/bg.jpg' %}" id="bg">
+        <img src="{% static 'Parallax/moon.png' %}" id="moon">
+        <img src="{% static 'Parallax/mountain.png' %}" id="mountain">
+        <img src="{% static 'Parallax/road.png' %}" id="road">
+        <h5 id="text">Cine Mania</h5>
+    </section>
+    <div class="form-container">
+        <h3>Cambiar contraseña</h3>
+        <br>
+        <p>En esta Seccion Podras Cambiar Tu Contraseña</p><br><br>
+        <form method="post" action="{% url 'parallax' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Cambiar contraseña</button>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <h2>Modificar correo electrónico</h2>
+        <br>
+        <p>En esta Seccion Podras Cambiar Tu Correo Electronico</p><br><br>
+        <form method="post" class="formuno">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar cambios</button>
+        </form>
+    </div>
+
+    <div class="form-container">
+        <h2>Agregar Peliculas Al Carro</h2>
+        <br>
+        <p>En esta Seccion Podras Agregar Peliculas A Tu Carrito</p><br><br>
+        {% if lista and lista.nombre %}
+            <form method="POST" action="{% url 'catalogopeliculas' lista_nombre=lista.nombre %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Agregar Película</button>
+            </form>
+            <br>
+            <h3>Peliculas En Tu Carrito: </h3>
+            <ul>
+                {% for pelicula in lista.peliculas_guardadas %}
+                    <li>{{ pelicula }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="sec">
+        <h2>Bienvenido a Cine Mania</h2>
+        <p>El contenido</p>
+    </div>
+    <script>
+        let bg = document.getElementById("bg");
+        let moon = document.getElementById("moon");
+        let mountain = document.getElementById("mountain");
+        let road = document.getElementById("road");
+        let text = document.getElementById("text");
+
+        window.addEventListener("scroll", function(){
+            var value = window.scrollY;
+
+            bg.style.top = value * 0.5 + "px";
+            moon.style.left = -value * 0.5 + "px";
+            mountain.style.top = -value * 0.15 + "px";
+            road.style.top = value * 0.15 + "px";
+            text.style.top = value * 1 + "px";
+        })
+    </script>
+</body>
+</html>

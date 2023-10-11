@@ -1,9 +1,18 @@
-<nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
-        <a class="navbar-brand" href="{% url 'Productoras' %}">Productoras</a>
-        <a class="navbar-brand" href="{% url 'Peliculas' %}">Peliculas</a>
-        <a class="navbar-brand" href="{% url 'Series' %}">Series</a>
-        <a class="btn btn-primary" href="#signup">Ingresar</a>
+<section>
+    {% load static %}
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet" />
+    <div>
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+                <a class="navbar-brand" href="{% url 'Productoras' %}">Productoras</a>
+                <a class="navbar-brand" href="{% url 'Peliculas' %}">Peliculas</a>
+                <a class="navbar-brand" href="{% url 'Series' %}">Series</a>
+                <a class="navbar-brand" href="{% url 'Cast' %}">Actores</a>
+                <a class="navbar-brand" href="{% url 'Categorias' %}">Generos</a>
+                <a class="btn btn-primary" href="{% url 'Perfil' %}">Perfil</a>
+                <a class="btn btn-primary" href="{% url 'cerrarSesion' %}">Cerrar Sesion</a>
+            </div>
+        </nav>
     </div>
-</nav>
+</section>
